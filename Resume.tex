@@ -1,0 +1,118 @@
+\documentclass{article}
+
+%packages
+\usepackage{geometry} %set peper size and font
+\usepackage{parskip} %probs redundant with setspace
+\usepackage{setspace} %single space document
+\usepackage{enumitem} %spacing after indent
+\usepackage{tikz}
+
+%formatting option
+\geometry{legalpaper, margin=0.25in}
+\singlespacing
+\newif\ifprevious
+
+%new commands
+\newcommand{\customSection}[1]{
+  \section*{#1}
+  \vspace{0in}
+}
+\newcommand{\entry}[1]{\textbf{#1}}
+
+% formatting for two lines each of which has a left and right justified component
+% 1                2
+% 3                4
+\newcommand{\doubleLineEntry}[4]{
+  \entry{#1}
+  \hfill
+  #2 \\
+  #3
+  \hfill
+  #4 \\
+  \vspace{0in}
+}
+% creates an education entry
+% 1: School Name and degree name
+% 2: GPA, just a decimal. ie 2.4
+% 3: Graduation Date
+% 4: random section, I use this for awards
+\newcommand{\educationEntry}[5]{
+  \doubleLineEntry{#1 | #2}{GPA: #3}{Graduation: #4}{#5}
+}
+
+% creates a work entry, without description and accomplishments
+% 1: company name
+% 2: start date
+% 3: end date
+% 4: title
+\newcommand{\workEntry}[6]{
+  \doubleLineEntry{#1}{#2 - #3}{\textbf{#4}}{}
+  #5
+  \bullettedList{#6}
+}
+
+% Creates a project entry, without a description and accomplishments
+% 1: project name
+% 2: project type. ie personal, club, class
+% 3: start date
+% 4: end date
+% 5: titles
+% 6: Description of Project
+% 7: Array of tasks
+\newcommand{\projectEntry}[7]{
+  \doubleLineEntry{#1(#2) }{#3 | #4}{\textbf{#5}}{}
+  #6
+  \bullettedList{#7}
+}
+
+% prints a list
+\newcommand{\bullettedList}[1]{
+  \begin{itemize}[noitemsep,nolistsep]
+    \foreach \v in #1{
+    \item \v
+    }
+  \end{itemize}  
+}
+
+% begin document
+\begin{document}
+
+%Education Section
+\customSection{Education}
+
+\educationEntry{Embry-Riddle Aeronautical University}{MS in Computer and Electrical Engineering}{3.75}{Spring 2022}{Dean's list: Fall 2020, Spring 2021}
+Relevant Classes: Requirements Engineering, Fundamentals of Systems Engineering, Engineering Project Management, System Safety and Certification
+
+\educationEntry{Embry-Riddle Aeronautical University}{BS in Computer Engineering}{3.663}{Fall 2021}{Dean’s list: Fall 2018, Spring 2019, Fall 2020, Spring 2021| Honor Roll: Fall 2019}
+Relevant Classes: Digital Circuit Design, Microprocessor Systems, Intro to Discrete Structures, Computer Science II(OOP), Computing Aerospace and Aviation, Digital Systems Design(FPGA), Telecommunication Systems, Computer Architecture, Linear Circuit Analysis, Software Engineering Practices, Operating Systems, Signals and Systems, Real Time Systems
+
+% Work Experience Section
+\customSection{Work Experience}
+\def\collinsTasks{
+  Added functionality to the “Black Side Test Manager” that allowed for a software image to be uploaded to a remotely connected device via TFTP in Java,
+  Created software to be run from command line for a USB hub that allows various parameters to be set via a Python API,
+  Created software that is able to listen into TENA messages in Python and print their output into individual windows for debugging
+}
+\workEntry{Collins Aerospace}{June 2020}{August 2020}{Software Engineering Intern}{Designed, created, and tested software for a few different projects under Collins Aerospace}{\collinsTasks}
+
+\def\spartanTasks{
+  Designed and programmed a Atmel microcontroller that debugged issues with the sono-beuys in order to decrease time spent on debugging and testing
+}
+\workEntry{Spartan Electronics}{March 2019}{August 2019}{Software Engineering Intern}{The goal of the sono-buey debug controller I was working on was to improve and modernize military sono-beuys}{\spartanTasks}
+
+% Project section
+\customSection{Projects}
+
+\def\NovaTasks{
+  Designed a layered architecture that was flexible enough to deal with the various needs of the rockets,
+  Created various electrical modules for the flight computer using KiCAD,
+  Managed the software team and created the software to perform various data processing tasks in Cpp with Cmake,
+  Created the software module that turns sensor data into position and orientation in Cpp with Cmake,
+  Created the software modulet that determines what actions need to be taken in Cpp with Cmake,
+  Set up a simple continuous integration that tests multiple modules and does simple flight simulations with Cpp and Cmake
+}
+\projectEntry{Nova Flight Computer}{ERFSEDS}{January 2020}{Present}{Chief Electrical Engineer, Software Lead, Github Maintainer}{The goal of this project is to create a flight computer from components to be used on High Power devices Model Rockets}{\NovaTasks}
+
+
+\end{document}
+
