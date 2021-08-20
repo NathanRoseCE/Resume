@@ -1,23 +1,83 @@
-\documentclass{article}
+\documentclass[10pt]{article}
 
 %packages
 \usepackage{geometry} %set peper size and font
 \usepackage{parskip} %probs redundant with setspace
 \usepackage{setspace} %single space document
 \usepackage{enumitem} %spacing after indent
-\usepackage{tikz}
+\usepackage{tikz} %arrays
+\usepackage{xcolor} %color
+\usepackage{hyperref} %links
+\usepackage{ifthen} %self explanatory
+\usepackage{titlesec} %spacing for sections
 
-%formatting option
-\geometry{legalpaper, margin=0.25in}
+% formatting option
+\newcounter{paperVersion}
+\setcounter{paperVersion}{0}
+
+\titlespacing\section{0pt}{4pt}{0pt}
+\geometry{legalpaper, margin=0.5in}
 \singlespacing
 \newif\ifprevious
+\parskip=0pt
+\setlength\parindent{0pt}
+\newcommand{\themeColorOne}{blue}
 
-%new commands
+
+\hypersetup{
+  colorlinks=true,
+  urlcolor=blue
+}
+
+% derived format values
+\newcommand{\nameColor}{\themeColorOne}
+\newcommand{\sectionColor}{\themeColorOne}
+
+% new commands
+
+% format your name
+% 1 name
+\newcommand{\nameFormat}[1]{
+  \begin{center}
+    {\Large \textcolor{\nameColor}{#1}}
+  \end{center}
+}
+% creates a url or shorted version
+% url
+% short version
+\newcommand{\autoUrl}[2]{
+  \ifthenelse{\value{paperVersion}=0}{\url{#1}}{#2}
+}
+
+% creates a common format for a custom section
+% 1 text for the section
 \newcommand{\customSection}[1]{
-  \section*{#1}
+  \section*{\textcolor{\sectionColor}{#1}}
   \vspace{0in}
 }
-\newcommand{\entry}[1]{\textbf{#1}}
+% formats a resource item
+% 1 item name
+% 2 item value
+\newcommand{\resourceItemFormat}[2] {
+  \textbf{#1}: #2
+}
+
+% formats the resources
+% 1 email
+% 2 phone number
+% 3 linkedin
+% 4 github
+\newcommand{\resources}[4]{
+  \begin{center}
+    \begin{tabular}{ll}
+      \resourceItemFormat{Email}{#1} & \resourceItemFormat{Phone Number}{#2} \\
+      \resourceItemFormat{LinkedIn}{#3} & \resourceItemFormat{Github}{#4} \\
+    \end{tabular}
+  \end{center}
+}
+\newcommand{\entry}[1]{
+  \textbf{#1}
+}
 
 % formatting for two lines each of which has a left and right justified component
 % 1                2
@@ -25,19 +85,22 @@
 \newcommand{\doubleLineEntry}[4]{
   \entry{#1}
   \hfill
-  #2 \\
+  \textsc{#2} \\
   #3
   \hfill
   #4 \\
   \vspace{0in}
 }
 % creates an education entry
-% 1: School Name and degree name
-% 2: GPA, just a decimal. ie 2.4
-% 3: Graduation Date
-% 4: random section, I use this for awards
-\newcommand{\educationEntry}[5]{
+% 1: School Name
+% 2: Degree Name
+% 3: GPA, just a decimal. ie 2.4
+% 4: Graduation Date
+% 5: awards
+% 6: relevent classes
+\newcommand{\educationEntry}[6]{
   \doubleLineEntry{#1 | #2}{GPA: #3}{Graduation: #4}{#5}
+  #6
 }
 
 % creates a work entry, without description and accomplishments
@@ -60,12 +123,12 @@
 % 6: Description of Project
 % 7: Array of tasks
 \newcommand{\projectEntry}[7]{
-  \doubleLineEntry{#1(#2) }{#3 | #4}{\textbf{#5}}{}
+  \doubleLineEntry{#1(#2)}{ #3 | #4}{\textbf{#5}}{}
   #6
   \bullettedList{#7}
 }
 
-% prints a list
+% prints a list in a unordered list
 \newcommand{\bullettedList}[1]{
   \begin{itemize}[noitemsep,nolistsep]
     \foreach \v in #1{
@@ -74,20 +137,44 @@
   \end{itemize}  
 }
 
+% prints a list in a csv
+\newcommand{\csvList}[1]{
+  \foreach \v in #1 {
+    \v,
+   }
+}
+
+% prints a list of skills
+% 1 Skill category name
+% 2 array of skills
+\newcommand{\skillList}[2]{
+  \textbf{#1:}\csvList{#2}
+}
+
 % begin document
 \begin{document}
 
+\nameFormat{Nathan Rose}
+\resources{mail.nathanrose@gmail.com}{386-457-0825}{\autoUrl{https://www.linkedin.com/in/nathan-m-rose}{nathan-m-rose}}{\autoUrl{http://github.com/NathanRoseCE/}{NathanRoseCE}}
+
+\noindent\rule{\textwidth}{1pt}
 %Education Section
 \customSection{Education}
 
-\educationEntry{Embry-Riddle Aeronautical University}{MS in Computer and Electrical Engineering}{3.75}{Spring 2022}{Dean's list: Fall 2020, Spring 2021}
-Relevant Classes: Requirements Engineering, Fundamentals of Systems Engineering, Engineering Project Management, System Safety and Certification
+\educationEntry{Embry-Riddle Aeronautical University}{MS in Computer and Electrical Engineering}{3.75}{Spring 2022}{Dean's list: Fall 2020, Spring 2021}{Relevant Classes: Requirements Engineering, Fundamentals of Systems Engineering, Engineering Project Management, System Safety and Certification}
 
-\educationEntry{Embry-Riddle Aeronautical University}{BS in Computer Engineering}{3.663}{Fall 2021}{Dean’s list: Fall 2018, Spring 2019, Fall 2020, Spring 2021| Honor Roll: Fall 2019}
-Relevant Classes: Digital Circuit Design, Microprocessor Systems, Intro to Discrete Structures, Computer Science II(OOP), Computing Aerospace and Aviation, Digital Systems Design(FPGA), Telecommunication Systems, Computer Architecture, Linear Circuit Analysis, Software Engineering Practices, Operating Systems, Signals and Systems, Real Time Systems
+\educationEntry{Embry-Riddle Aeronautical University}{BS in Computer Engineering}{3.663}{Fall 2021}{Dean’s list: Fall 2018, Spring 2019, Fall 2020, Spring 2021| Honor Roll: Fall 2019}{Relevant Classes: Digital Circuit Design, Microprocessor Systems, Intro to Discrete Structures, Computer Science II(OOP), Computing Aerospace and Aviation, Digital Systems Design(FPGA), Telecommunication Systems, Computer Architecture, Linear Circuit Analysis, Software Engineering Practices, Operating Systems, Signals and Systems, Real Time Systems}
 
 % Work Experience Section
 \customSection{Work Experience}
+\def\katalystTasks{
+  Set up Test Driven Development and Continuous Integration practices,
+  Designed a Test Framework for a Phase II STTR Project: LIMPET,
+  Designed a communication framework to allow general purpose communication between modules on a spacecraft,
+  Architected and coded a software tool to analyze the Space Domain Awareness capabilities of different constellations
+}
+
+\workEntry{Katalyst Space Technologies}{June 2021}{Present}{Space Systems Engineering Intern}{At this startup, I worked on a several projects and also worked to ensure improved software practices of the team}{\katalystTasks}
 \def\collinsTasks{
   Added functionality to the “Black Side Test Manager” that allowed for a software image to be uploaded to a remotely connected device via TFTP in Java,
   Created software to be run from command line for a USB hub that allows various parameters to be set via a Python API,
@@ -115,7 +202,8 @@ Relevant Classes: Digital Circuit Design, Microprocessor Systems, Intro to Discr
 
 \def\EasyNNTasks{
   Designed an architecture that will work by default on the MNIST database,
-  Created a Neural Network layer in python that leveraged Numpy in order to simplify and speed up calculations
+  Created a Neural Network layer in python that leveraged Numpy in order to simplify and speed up calculations,
+  Designed and implimented test software to confirm mathematics
 }
 \projectEntry{EasyNN}{Senior Design}{January 2021}{May 2021}{Developer}{The goal is to create an easy to use, yet highly customizable software that will allow people to easily start train neural networks}{\EasyNNTasks}
 
@@ -146,7 +234,7 @@ Relevant Classes: Digital Circuit Design, Microprocessor Systems, Intro to Discr
   Created and Managed the organization's Github in order to provide version control and issue tracking,
   Organized a Systems Engineering process for the development of electronics within Cerberus
 }
-\projectEntry{ERFSEDS}{Club}{May 2020}{PRESENT}{Chief Computer Engineer}{Responsible for the safe and successful operation of all electronics}{\erfsedsTasks}
+\projectEntry{ERFSEDS}{Club}{May 2020}{Present}{Chief Computer Engineer}{Responsible for the safe and successful operation of all electronics}{\erfsedsTasks}
 
 \def\RAERTasks{
   Ensured the training of new members with workshops to teach application of engineering and technical skills,
@@ -157,5 +245,33 @@ Relevant Classes: Digital Circuit Design, Microprocessor Systems, Intro to Discr
 
 \customSection{Skills}
 
+\def\applicationSkills{
+  CMake,
+  Git,
+  KiCAD,
+  Autodesk Eagle,
+  ROS,
+  Eclipse,
+  IntelliJ,
+  Ruby on Rails
+}
+\skillList{Application}{\applicationSkills}
+
+\def\languangeSkills{
+  Python,
+  C/C++,
+  Java,
+  Latex,
+  Ruby,
+  Verilog
+}
+\skillList{Languanges}{\languangeSkills}
+
+\def\keywords{
+  FPGA,
+  Eagle Scout,
+  FIRST Alumni
+}
+\skillList{Other Notes}{\keywords}
 \end{document}
 
