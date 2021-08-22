@@ -10,16 +10,20 @@
 \usepackage{hyperref} %links
 \usepackage{ifthen} %self explanatory
 \usepackage{titlesec} %spacing for sections
+\usepackage{docmute}
+\usepackage{import}
+
 
 % formatting option --------------------------------------------------------------------------------------------
 \newcounter{paperVersion}
 \setcounter{paperVersion}{0}
+\newcounter{paragraphIndents}
+\setcounter{paragraphIndents}{1} %doesnt work yet lol
+\newcommand{\marginSize}{0.5in}
+\singlespacing
+
 
 \titlespacing\section{0pt}{4pt}{0pt}
-\geometry{letterpaper, margin=0.5in}
-\singlespacing
-\newif\ifprevious
-\parskip=0pt
 \setlength\parindent{0pt}
 \newcommand{\themeColorOne}{blue}
 \newcommand{\entrySpacing}{2pt}
@@ -33,344 +37,29 @@
 % derived format values
 \newcommand{\nameColor}{\themeColorOne}
 \newcommand{\sectionColor}{\themeColorOne}
+\geometry{letterpaper, margin=\marginSize}
+\ifthenelse{\value{paragraphIndents}=1}{
+  \newif\ifprevious
+  \parskip=0pt
+}
+{}
 
-% new commands -------------------------------------------------------------------------------------------------
-
-% Tells latex not to break this unless it has to
-\newcommand{\keepTogether}[1]{
-  \noindent\begin{minipage}{\linewidth}
-    #1
-  \end{minipage}
-  \vspace{\entrySpacing}
-}
-
-% format your name
-% 1 name
-\newcommand{\nameFormat}[1]{
-  \begin{center}
-    {\LARGE \textcolor{\nameColor}{#1}}
-  \end{center}
-  \vspace{8pt}
-}
-% creates a url or shorted version
-% url
-% short version
-\newcommand{\autoUrl}[2]{
-  \ifthenelse{\value{paperVersion}=0}{\url{#1}}{#2}
-}
-
-% creates a common format for a custom section
-% 1 text for the section
-\newcommand{\customSection}[1]{
-  \section*{\textcolor{\sectionColor}{#1}}
-  \vspace{0in}
-}
-% formats a resource item
-% 1 item name
-% 2 item value
-\newcommand{\resourceItemFormat}[2] {
-  \textbf{#1}: #2
-}
-
-% formats the resources
-% 1 email
-% 2 phone number
-% 3 linkedin
-% 4 github
-\newcommand{\resources}[4]{
-  \begin{center}
-    \begin{tabular}{ll}
-      \resourceItemFormat{Email}{#1} & \resourceItemFormat{Phone Number}{#2} \\
-      \resourceItemFormat{LinkedIn}{#3} & \resourceItemFormat{Github}{#4} \\
-    \end{tabular}
-  \end{center}
-}
-\newcommand{\entry}[1]{
-  \textbf{#1}
-}
-
-% formatting for two lines each of which has a left and right justified component
-% 1                2
-% 3                4
-\newcommand{\doubleLineEntry}[4]{
-  \entry{#1}
-  \hfill
-  \textsc{#2} \\
-  #3
-  \hfill
-  #4 \\
-}
-% creates an education entry
-% 1: School Name
-% 2: Degree Name
-% 3: GPA, just a decimal. ie 2.4
-% 4: Graduation Date
-% 5: awards
-% 6: relevent classes
-\newcommand{\educationEntry}[6]{
-  \keepTogether{
-    \doubleLineEntry{#1 | #2}{GPA: #3}{Graduation: #4}{#5}
-    #6
-  }
-}
-
-% creates a work entry, without description and accomplishments
-% 1: company name
-% 2: start date
-% 3: end date
-% 4: title
-\newcommand{\workEntry}[6]{
-  \keepTogether{
-    \doubleLineEntry{#1}{#2 - #3}{\textbf{#4}}{}
-    #5
-    \bullettedList{#6}
-  }
-}
-
-% Creates a project entry, without a description and accomplishments
-% 1: project name
-% 2: project type. ie personal, club, class
-% 3: start date
-% 4: end date
-% 5: titles
-% 6: Description of Project
-% 7: Array of tasks
-\newcommand{\projectEntry}[7]{
-  \keepTogether{
-    \doubleLineEntry{#1(#2)}{ #3 | #4}{\textbf{#5}}{}
-    #6
-    \bullettedList{#7}
-  } 
-}
-
-% prints a list in a unordered list
-\newcommand{\bullettedList}[1]{
-  \begin{itemize}[noitemsep,nolistsep]
-    \foreach \v in #1{
-    \item \v
-    }
-  \end{itemize}  
-}
-
-% prints a list in a csv
-\newcommand{\csvList}[1]{
-  #1
-}
-
-% prints a list of skills
-% 1 Skill category name
-% 2 array of skills
-\newcommand{\skillList}[2]{
-  \textbf{#1:}\csvList{#2}
-}
-
-
-
-% CONTENT FORMATTING COMMANDS ----------------------------------------------------------------------------------
-\newcommand{\topHeader}{
-  \nameFormat{Nathan Rose}
-  \resources{mail.nathanrose@gmail.com}{386-457-0825}{\autoUrl{https://www.linkedin.com/in/nathan-m-rose}{nathan-m-rose}}{\autoUrl{http://github.com/NathanRoseCE/}{NathanRoseCE}}
-  \noindent\rule{\textwidth}{1pt}
-}
-\newcommand{\Education}{
-  \customSection{Education}
-  \EmbryRiddleMasters
-  
-  \EmbryRiddleBachelor
-}
-\newcommand{\EmbryRiddleMasters}{
-  \def\relevantClasses{
-    Software Architecture,
-    Requirements Engineering,
-    Fundamentals of Systems Engineering,
-    Engineering Project Management,
-    System Safety and Certification,
-    Random Signals,
-    Linear Systems
-  }
-  \educationEntry{Embry-Riddle Aeronautical University}{MS in Computer and Electrical Engineering}{3.75}{Spring 2022}{Dean's list: Fall 2020, Spring 2021}{Relevant Classes:\csvList{\relevantClasses}}
-}
-\newcommand{\EmbryRiddleBachelor}{
-  \def\relevantClasses{
-    Digital Circuit Design,
-    Microprocessor Systems,
-    Intro to Discrete Structures,
-    Computer Science II(OOP),
-    Computing Aerospace and Aviation,
-    Digital Systems Design(FPGA),
-    Telecommunication Systems,
-    Computer Architecture,
-    Linear Circuit Analysis,
-    Software Engineering Practices,
-    Operating Systems,
-    Real Time Operating Systems,
-    Signals and Systems,
-    Real Time Systems
-  }
-  \educationEntry{Embry-Riddle Aeronautical University}{BS in Computer Engineering}{3.663}{Fall 2021}{Dean’s list: Fall 2018, Spring 2019, Fall 2020, Spring 2021| Honor Roll: Fall 2019}{Relevant Classes:\csvList{\relevantClasses}}
-}
-
-\newcommand{\WorkExperience}{
-  \customSection{Work Experience}
-  \katalystSpace
-  \collins
-  \spartan
-}
-\newcommand{\katalystSpace}{
-  \def\katalystTasks{
-    Set up Test Driven Development and Continuous Integration practices,
-    Designed a Test Framework for a Phase II STTR Project: LIMPET,
-    Designed a communication framework to allow general purpose communication between modules on a spacecraft,
-    Architected and coded a software tool to analyze the Space Domain Awareness capabilities of different constellations,
-    Worked on various documents for an SRRT Phase II Proposal including a Project Plan
-  }
-  \workEntry{Katalyst Space Technologies}{June 2021}{Present}{Space Systems Engineering Intern}{At this startup, I worked on a several projects and also worked to ensure improved software practices of the team}{\katalystTasks}
-}
-\newcommand{\collins}{
-  \def\collinsTasks{
-    Added functionality to the “Black Side Test Manager” that allowed for a software image to be uploaded to a remotely connected device via TFTP in Java,
-    Created software to be run from command line for a USB hub that allows various parameters to be set via a Python API,
-    Created software that is able to listen into TENA messages in Python and print their output into individual windows for debugging
-  }
-  \workEntry{Collins Aerospace}{June 2020}{August 2020}{Software Engineering Intern}{Designed, created, and tested software for a few different projects under Collins Aerospace}{\collinsTasks}
-}
-\newcommand{\spartan}{
-  \def\spartanTasks{
-    Designed and programmed a Atmel microcontroller that debugged issues with the sono-beuys in order to decrease time spent on debugging and testing
-  }
-  \workEntry{Spartan Electronics}{March 2019}{August 2019}{Software Engineering Intern}{The goal of the sono-buey debug controller I was working on was to improve and modernize military sono-beuys}{\spartanTasks}
-}
-
-\newcommand{\projects}{
-  \customSection{Projects}
-  \nova
-  \RMC
-  \SDATool
-  \artemis
-  \roseProcessor
-  \easynn
-  \erfseds  
-  \raer
-}
-
-\newcommand{\nova}{
-  \def\NovaTasks{
-    Designed a layered architecture that was flexible enough to deal with the various needs of the rockets,
-    Created various electrical modules for the flight computer using KiCAD,
-    Managed the software team and created the software to perform various data processing tasks in Cpp with Cmake,
-    Created the software module that turns sensor data into position and orientation in Cpp with Cmake,
-    Created the software modulet that determines what actions need to be taken in Cpp with Cmake,
-    Set up a simple continuous integration that tests multiple modules and does simple flight simulations with Cpp and Cmake 
-  }
-  \projectEntry{Nova Flight Computer}{ERFSEDS}{January 2020}{Present}{Chief Computer Engineer, Software Lead, Github Maintainer}{The goal of this project is to create a flight computer from components to be used on High Power devices Model Rockets}{\NovaTasks}
-  
-}
-\newcommand{\easynn}{
-  \def\EasyNNTasks{
-    Designed an architecture that will work by default on the MNIST database,
-    Created a Neural Network layer in python that leveraged Numpy in order to simplify and speed up calculations,
-    Designed and implimented test software to confirm mathematics
-  }
-  \projectEntry{EasyNN}{Senior Design}{January 2021}{May 2021}{Developer}{The goal is to create an easy to use, yet highly customizable software that will allow people to easily start train neural networks}{\EasyNNTasks}
-}
-\newcommand{\RMC}{
-  \def\RMCTasks{
-    Managed a robotics team consisting of roughly 30 members during a complete redesign to all systems to increase the performance of the robot at competition with the criteria to maximize regolith collection,
-    Designed electrical boards in Autodesk Eagle that allowed for a microcontroller to communicate with a main computer and interface with a variety of sensors and controllers,
-    Programmed the walking motion of a robot with C-shaped Legs in Labview
-  }
-  \projectEntry{NASA Robotic Mining Competition}{Robotics Association}{September 2018}{May 2020}{Project Lead, Electrical Member, Software Member}{NASA Robotic Mining Competition(RMC) is a competition held every May at Kennedy Space Center where a robot must be designed that must cross rough terrain, mine icy regolith, and return it to a bin for processing}{\RMCTasks}
-}
-\newcommand{\artemis}{
-  \def\artemisTasks{
-    Discovered a safety issue that caused the flight computer to not act as intended,
-    Redesigned the Ebay in order to ensure the safety of the rocket and compliance with Spaceport America Rules,
-    Analyzed the data from the flight computer in order to diagnose flight issues and determine the performance of the payload and avionics system
-  }
-  \projectEntry{Artemis Rocket}{ERFSEDS}{January 2019}{May 2021}{Avionics Member}{Artemis is a two-stage rocket that competes in the Spaceport America Rocket Competition.}{\artemisTasks}
-}
-\newcommand{\roseProcessor}{
-  \def\roseProcessorTasks {
-    Increased the throughput of the processor by a factor of two by creating a two stage pipeline,
-    Simplified the processor’s IO operations by mapping IO operations to registers in the data memory,
-    Designed and implemented a stack to increase the functionality of the board,
-    Created a variable length opcode(fixed instruction size) in order to expand the number of operations that can be done without changing information
-  }
-  \projectEntry{Rose Processor}{Class Project}{September 2018}{December 2018}{Designer}{Modified the design of a micro-processor implemented on an FPGA in Verilog}{\roseProcessorTasks}
-}
-\newcommand{\erfseds}{
-  \def\erfsedsTasks{
-    Ensured the safe design and operation of all electronics by setting up review processes for all components,
-    Created and Managed the organization's Github in order to provide version control and issue tracking,
-    Organized a Systems Engineering process for the development of electronics within Cerberus
-  }
-  \projectEntry{ERFSEDS}{Club}{May 2020}{Present}{Chief Computer Engineer}{Responsible for the safe and successful operation of all electronics}{\erfsedsTasks}
-}
-\newcommand{\raer}{
-  \def\RAERTasks{
-    Ensured the training of new members with workshops to teach application of engineering and technical skills,
-    Adapted to circumstances through the COVID Pandemic, ensuring the continued development while ensuring safety and adherence to school policies,
-    Increased the awareness of the clubs and projects of RAER within the organization and the school, with the best recruiting in several years
-  }
-  \projectEntry{Robotics Association of Embry-Riddle}{Club}{September 2018}{May 2021}{President, Vice President}{Lead the club through the COVID crises ensuring the continued success of the club}{\RAERTasks}
-}
-\newcommand{\SDATool}{
-  \def\Tasks{
-    Architected the structure of the code with stakeholders to determine immediate goals and path forward of the project,
-    Setup a automated test suite and ensured Test Driven Deveopment Practices were followed through Reviews,
-    Set up a Continuous Integration testing pipeline on Azure Devops to ensure proper practices were followed,
-    Programmed several modules outlined in the class diagram in python3,
-    Setup a repository with appropriate policies
-  }
-  \projectEntry{SDA Tool}{Katalyst Space Technologies}{July 2021}{Present}{Architect, Software Engineer}{SDA tool developers to help evalute potential Space Domail Awareness platforms}{\Tasks}
-}
-\newcommand{\skills}{
-  \customSection{Skills}
-  \applications
-  
-  \languanges
-  
-  \otherNotes
-  
-}
-\newcommand{\applications}{
-  \def\applicationSkills{
-    CMake,
-    Git,
-    KiCAD,
-    Autodesk Eagle,
-    ROS,
-    Eclipse,
-    IntelliJ,
-    Ruby on Rails
-  }
-  \skillList{Application}{\applicationSkills}
-}
-\newcommand{\languanges}{
-  \def\languangeSkills{
-    Python,
-    C/C++,
-    Java,
-    Verilog,
-    Latex,
-    Ruby,
-  }
-  \skillList{Languanges}{\languangeSkills}
-}
-\newcommand{\otherNotes}{
-  \def\keywords{
-    FPGA,
-    Eagle Scout,
-    FIRST Alumni
-  }
-  \skillList{Other Notes}{\keywords}
+\newcommand{\resume}{
+  \topHeader
+  \Education
+  \WorkExperience
+  \projects
+  \skills
 }
 % begin document
 \begin{document}
-\topHeader
-\Education
-\WorkExperience
-\projects
-\skills
+\subimport{Formatting/}{Format}
+\subimport{Header/}{Header}
+\subimport{Education/}{Education}
+\subimport{Work/}{Work}
+\subimport{Projects/}{Projects}
+\subimport{Skills/}{Skills}
+
+\resume
 \end{document}
 

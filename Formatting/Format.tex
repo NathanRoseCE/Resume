@@ -1,0 +1,55 @@
+\begin{document}
+
+% Tells latex not to break this unless it has to
+\newcommand{\keepTogether}[1]{
+  \noindent\begin{minipage}{\linewidth}
+    #1
+  \end{minipage}
+  \vspace{\entrySpacing}
+}
+
+% creates a url or shorted version
+% url
+% short version
+\newcommand{\autoUrl}[2]{
+  \ifthenelse{\value{paperVersion}=0}{\url{#1}}{#2}
+}
+
+% creates a common format for a custom section
+% 1 text for the section
+\newcommand{\customSection}[1]{
+  \section*{\textcolor{\sectionColor}{#1}}
+  \vspace{0in}
+}
+\newcommand{\entry}[1]{
+  \textbf{#1}
+}
+
+% formatting for two lines each of which has a left and right justified component
+% 1                2
+% 3                4
+\newcommand{\doubleLineEntry}[4]{
+  \entry{#1}
+  \hfill
+  \textsc{#2} \\
+  #3
+  \hfill
+  #4 \\
+}
+
+
+
+% prints a list in a unordered list
+\newcommand{\bullettedList}[1]{
+  \begin{itemize}[noitemsep,nolistsep]
+    \foreach \v in #1{
+    \item \v
+    }
+  \end{itemize}  
+}
+
+% prints a list in a csv
+\newcommand{\csvList}[1]{
+  #1
+}
+\end{document}

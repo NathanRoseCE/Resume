@@ -1,0 +1,40 @@
+\begin{document}
+
+% Creates a project entry, without a description and accomplishments
+% 1: project name
+% 2: project type. ie personal, club, class
+% 3: start date
+% 4: end date
+% 5: titles
+% 6: Description of Project
+% 7: Array of tasks
+\newcommand{\projectEntry}[7]{
+  \keepTogether{
+    \doubleLineEntry{#1(#2)}{ #3 | #4}{\textbf{#5}}{}
+    #6
+    \bullettedList{#7}
+  }
+  
+}
+
+\newcommand{\projects}{
+  \customSection{Projects}
+  \nova
+  \RMC
+  \SDATool
+  \artemis
+  \roseProcessor
+  \easynn
+  \erfseds
+  \raer
+}
+\subimport{./}{Nova}
+\subimport{./}{Easynn}
+\subimport{./}{rmc}
+\subimport{./}{artemis}
+\subimport{./}{RoseProcessor}
+\subimport{./}{erfseds}
+\subimport{./}{Raer}
+\subimport{./}{sdaTool}
+
+\end{document}
