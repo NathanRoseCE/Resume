@@ -7,7 +7,7 @@ from . import DoubleLineEntryFilter
 from . import KeepTogetherFilter
 from . import CSVFilter
 from . import BulletedFilter
-
+from . import URLFilter
 
 def initialize():
     """
@@ -22,7 +22,8 @@ def initialize():
         WorkFilter.registrationInfo,
         BulletedFilter.registrationInfo,
         ProjectFilter.registrationInfo,
-        SkillsFilter.registrationInfo
+        SkillsFilter.registrationInfo,
+        URLFilter.registrationInfo
     ]
     for registerFunc in registrationFuncs:
         filterinfo = registerFunc()

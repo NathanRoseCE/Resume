@@ -1,0 +1,34 @@
+{    
+    "skills": {
+	"applications": [
+	    "CMake",
+	    "Git",
+	    "KiCAD",
+	    "DDS",
+	    "DDS-XRCE",
+	    "Docker",
+	    "Docker-Compose",
+	    "Eclipse",
+	    "IntelliJ",
+	    "Django",
+	    "Autodesk Eagle",
+	    "ROS",
+	    "Ruby on Rails"
+	],
+	"languanges": [
+	    "Python",
+	    "C/C++",
+	    "Java",
+	    "Rust",
+	    "Verilog",
+	    "\\LaTeX",
+	    "Ruby"
+	],
+	"keywords": [
+	    "FPGA",
+	    "Eagle Scout",
+	    "FIRST Alumni"
+	    
+	]
+    }
+}

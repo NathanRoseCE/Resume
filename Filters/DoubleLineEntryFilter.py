@@ -12,5 +12,5 @@ class DoubleLineEntryFilter(TemplateFilter):
     name = "DoubleLineEntry"
     
     def filter(entries: list[str]) -> str:
-        return (r'\entry{' + entries[0] + r'} \hfill \textbf{' + entries[1] + r"}\\" + os.linesep + 
+        return (r'\textbf{' + entries[0] + r'} \hfill \textbf{' + entries[1] + r"}\\" + os.linesep + 
                 entries[2] + r"\hfill " + entries[3] + r"\\")

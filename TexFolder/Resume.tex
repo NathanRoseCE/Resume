@@ -15,14 +15,13 @@
 
 
 % formatting option --------------------------------------------------------------------------------------------
-\newcounter{paperVersion}
-\setcounter{paperVersion}{0}
-\newcounter{paragraphIndents}
-\setcounter{paragraphIndents}{1} %doesnt work yet lol
 \newcommand{\marginSize}{0.5in}
 \newcommand{\themeColorOne}{blue}
-\singlespacing
 
+\singlespacing
+\newcommand{\nameColor}{\themeColorOne}
+\newcommand{\sectionColor}{\themeColorOne}
+\geometry{letterpaper, margin=\marginSize}
 \newcommand{\entrySpacing}{4pt}
 \titlespacing\section{0pt}{4pt}{0pt}
 \setlength\parindent{0pt}
@@ -33,35 +32,57 @@
   urlcolor=\themeColorOne
 }
 
-% derived format values
-\newcommand{\nameColor}{\themeColorOne}
-\newcommand{\sectionColor}{\themeColorOne}
-\geometry{letterpaper, margin=\marginSize}
-\ifthenelse{\value{paragraphIndents}=1}{
-  \newif\ifprevious
-  \parskip=0pt
+% TODO: switch this to renew command to use base section
+\newcommand{\customSection}[1]{
+  \section*{\textcolor{\sectionColor}{#1}}
+  \vspace{0in}
 }
-{}
 
-\newcommand{\resume}{
+% formats the resources
+% 1 email
+% 2 phone number
+% 3 linkedin
+% 4 github
+\newcommand{\resources}[4]{
+  \begin{center}
+    \begin{tabular}{ll}
+      \resourceItemFormat{Email}{#1} & \resourceItemFormat{Phone Number}{#2} \\
+      \resourceItemFormat{LinkedIn}{#3} & \resourceItemFormat{Github}{#4} \\
+    \end{tabular}
+  \end{center}
+}
+
+% formats a resource item
+% 1 item name
+% 2 item value
+\newcommand{\resourceItemFormat}[2] {
+  \textbf{#1}: #2
+}
+% format your name
+% 1 name
+\newcommand{\nameFormat}[1]{
+  \begin{center}
+    {\LARGE \textcolor{\nameColor}{#1}}
+  \end{center}
+  \vspace{8pt}
 }
 % begin document
 \begin{document}
-\subimport{./}{Format}
-\subimport{./}{Header}
 
-\topHeader
+\nameFormat{Nathan Rose}
+\resources{mail.nathanrose@gmail.com}{ 386-457-0825}{\url{https://www.linkedin.com/in/nathan-m-rose}}{\url{http://github.com/NathanRoseCE/}}
+\noindent\rule{\textwidth}{1pt}
 
 \customSection{Education}
 \noindent\begin{minipage}{\linewidth}
-\entry{Embry-Riddle Aeronautical University(BS in Computer Engineering)} \hfill \textbf{GPA: 3.667}\\
+\textbf{Embry-Riddle Aeronautical University(BS in Computer Engineering)} \hfill \textbf{GPA: 3.667}\\
 Graduation: Fall 2021\hfill Dean’s list: Fall 2018, Spring 2019, Fall 2020, Spring 2021| Honor Roll: Fall 2019\\Digital Circuit Design, Microprocessor Systems, Intro to Discrete Structures, Computer Science II(OOP), Computing Aerospace and Aviation, Digital Systems Design(FPGA), Telecommunication Systems, Computer Architecture, Linear Circuit Analysis, Software Engineering Practices, Operating Systems, Real Time Operating Systems, Signals and Systems, Real Time Systems
 
 \end{minipage}
 \vspace{\entrySpacing}
 
 \noindent\begin{minipage}{\linewidth}
-\entry{Embry-Riddle Aeronautical University(MS in Computer Engineering)} \hfill \textbf{GPA: 3.75}\\
+\textbf{Embry-Riddle Aeronautical University(MS in Computer Engineering)} \hfill \textbf{GPA: 3.75}\\
 Graduation: Spring 2022\hfill Dean's list: Fall 2020, Spring 2021\\Software Architecture, Requirements Engineering, Fundamentals of Systems Engineering, Engineering Project Management, System Safety and Certification, Random Signals, Linear Systems
 
 \end{minipage}
@@ -70,7 +91,7 @@ Graduation: Spring 2022\hfill Dean's list: Fall 2020, Spring 2021\\Software Arch
 
 \customSection{Work Experience}
 \noindent\begin{minipage}{\linewidth}
-\entry{Katalyst Spce Technologies} \hfill \textbf{June 2021 - Present}\\
+\textbf{Katalyst Spce Technologies} \hfill \textbf{June 2021 - Present}\\
 Space Systems Engineering Intern\hfill \\Katalyst Space Technologies is a startup that is focused on developing technologies for modular spacecraft
 \begin{itemize}[noitemsep,nolistsep]
 \item Instructed the team on Software and Devops practices such as git and automated testing to improve team productivity
@@ -87,7 +108,7 @@ Space Systems Engineering Intern\hfill \\Katalyst Space Technologies is a startu
 \vspace{\entrySpacing}
 
 \noindent\begin{minipage}{\linewidth}
-\entry{Collins Aerospace} \hfill \textbf{June 2020 - August 2020}\\
+\textbf{Collins Aerospace} \hfill \textbf{June 2020 - August 2020}\\
 Software Engineering Intern\hfill \\Designed, created, and tested software for a few different projects under Collins Aerospace
 \begin{itemize}[noitemsep,nolistsep]
 \item Added functionality to the “Black Side Test Manager” that allowed for a software image to be uploaded to a remotely connected device via TFTP in Java and made a UI for said tool that would be used in the field
@@ -100,7 +121,7 @@ Software Engineering Intern\hfill \\Designed, created, and tested software for a
 \vspace{\entrySpacing}
 
 \noindent\begin{minipage}{\linewidth}
-\entry{Sparton Electronics} \hfill \textbf{March 2019 - August 2019}\\
+\textbf{Sparton Electronics} \hfill \textbf{March 2019 - August 2019}\\
 Software Engineering Intern\hfill \\The goal of the sono-buey debug controller I was working on was to improve and modernize military sono-beuys
 \begin{itemize}[noitemsep,nolistsep]
 \item Programmed an Atmel microcontroller that was used as a debugging utility for integration tests of the product
@@ -114,7 +135,7 @@ Software Engineering Intern\hfill \\The goal of the sono-buey debug controller I
 
 \customSection{Projects}
 \noindent\begin{minipage}{\linewidth}
-\entry{Nova Flight Computer(ERFSEDS)} \hfill \textbf{January 2020 - Present}\\
+\textbf{Nova Flight Computer(ERFSEDS)} \hfill \textbf{January 2020 - Present}\\
 Chief Computer Engineer, Software Lead, Github Maintainer\hfill \\The goal of this project is to create a flight computer from components to be used on High Power Model Rockets
 \begin{itemize}[noitemsep,nolistsep]
 \item Designed a layered software architecture that was able to deal with the requirements from different stakeholders
@@ -129,7 +150,7 @@ Chief Computer Engineer, Software Lead, Github Maintainer\hfill \\The goal of th
 \vspace{\entrySpacing}
 
 \noindent\begin{minipage}{\linewidth}
-\entry{EasyNN(Senior Design)} \hfill \textbf{January 2021 - May 2021}\\
+\textbf{EasyNN(Senior Design)} \hfill \textbf{January 2021 - May 2021}\\
 Developer\hfill \\The goal is to create an easy to use and highly customizable software to allow people to create and train neural networks
 \begin{itemize}[noitemsep,nolistsep]
 \item Created a Neural Network layer in python that leveraged Numpy in order to simplify and speed up calculations
@@ -141,7 +162,7 @@ Developer\hfill \\The goal is to create an easy to use and highly customizable s
 \vspace{\entrySpacing}
 
 \noindent\begin{minipage}{\linewidth}
-\entry{NASA Robotic Mining Competition(Robotics Association)} \hfill \textbf{September 2018 - May 2020}\\
+\textbf{NASA Robotic Mining Competition(Robotics Association)} \hfill \textbf{September 2018 - May 2020}\\
 Project Lead, Electrical Member, Software Member\hfill \\NASA Robotic Mining Competition(RMC) is a competition held every May at Kennedy Space Center where a robot must be designed that must cross rough terrain, mine icy regolith, and return it to a bin for processing
 \begin{itemize}[noitemsep,nolistsep]
 \item Integrated Mechanical Electrical and Software efforts during a system redesign  to increase the performance of the robot
@@ -155,7 +176,7 @@ Project Lead, Electrical Member, Software Member\hfill \\NASA Robotic Mining Com
 \vspace{\entrySpacing}
 
 \noindent\begin{minipage}{\linewidth}
-\entry{Artemis Rocket(ERFSEDS)} \hfill \textbf{January 2019 - May 2021}\\
+\textbf{Artemis Rocket(ERFSEDS)} \hfill \textbf{January 2019 - May 2021}\\
 Avionics Member\hfill \\Artemis is a two-stage rocket that competes in the Spaceport America Rocket Competition.
 \begin{itemize}[noitemsep,nolistsep]
 \item Discovered a safety issue that caused the flight computer to never disarm and created a fix to solve the issue
@@ -168,7 +189,7 @@ Avionics Member\hfill \\Artemis is a two-stage rocket that competes in the Space
 \vspace{\entrySpacing}
 
 \noindent\begin{minipage}{\linewidth}
-\entry{Rose Processor(Class Project)} \hfill \textbf{September 2018 - December 2018}\\
+\textbf{Rose Processor(Class Project)} \hfill \textbf{September 2018 - December 2018}\\
 Designer\hfill \\Modified the design of a micro-processor implemented on an FPGA in Verilog
 \begin{itemize}[noitemsep,nolistsep]
 \item Increased the throughput of the processor by a factor of two by creating a three stage pipeline
@@ -182,7 +203,7 @@ Designer\hfill \\Modified the design of a micro-processor implemented on an FPGA
 \vspace{\entrySpacing}
 
 \noindent\begin{minipage}{\linewidth}
-\entry{ERFSEDS(Club)} \hfill \textbf{May 2020 - Present}\\
+\textbf{ERFSEDS(Club)} \hfill \textbf{May 2020 - Present}\\
 Chief Computer Engineer\hfill \\Responsible for the safe and successful operation of all electronics
 \begin{itemize}[noitemsep,nolistsep]
 \item Ensured the safe design and operation of all electronics by setting up review processes for all components
@@ -195,7 +216,7 @@ Chief Computer Engineer\hfill \\Responsible for the safe and successful operatio
 \vspace{\entrySpacing}
 
 \noindent\begin{minipage}{\linewidth}
-\entry{RAER(Club)} \hfill \textbf{September 2018 - May 2021}\\
+\textbf{RAER(Club)} \hfill \textbf{September 2018 - May 2021}\\
 President, Vice President\hfill \\Lead the club through the COVID crises ensuring the continued success of the club
 \begin{itemize}[noitemsep,nolistsep]
 \item Ensured the training of new members with workshops to teach application of engineering and technical skills
@@ -208,7 +229,7 @@ President, Vice President\hfill \\Lead the club through the COVID crises ensurin
 \vspace{\entrySpacing}
 
 \noindent\begin{minipage}{\linewidth}
-\entry{RAER(Club)} \hfill \textbf{September 2018 - May 2021}\\
+\textbf{RAER(Club)} \hfill \textbf{September 2018 - May 2021}\\
 President, Vice President\hfill \\Lead the club through the COVID crises ensuring the continued success of the club
 \begin{itemize}[noitemsep,nolistsep]
 \item Ensured the training of new members with workshops to teach application of engineering and technical skills
@@ -221,7 +242,7 @@ President, Vice President\hfill \\Lead the club through the COVID crises ensurin
 \vspace{\entrySpacing}
 
 \noindent\begin{minipage}{\linewidth}
-\entry{SDA Tool(Katalyst Space Technologies)} \hfill \textbf{July 2021 - Present}\\
+\textbf{SDA Tool(Katalyst Space Technologies)} \hfill \textbf{July 2021 - Present}\\
 Architect, Software Engineer\hfill \\The SDA tool allowed developers to characterize differnt Space Domain Awareness platforms under various conditions
 \begin{itemize}[noitemsep,nolistsep]
 \item Architected the structure of the code with stakeholders to determine immediate goals and path forward of the project
@@ -236,7 +257,7 @@ Architect, Software Engineer\hfill \\The SDA tool allowed developers to characte
 \vspace{\entrySpacing}
 
 \noindent\begin{minipage}{\linewidth}
-\entry{Fedora(Grad Project)} \hfill \textbf{Auguest 2020 - Present}\\
+\textbf{Fedora(Grad Project)} \hfill \textbf{Auguest 2020 - Present}\\
 Creator, Quality Assurance, Developer\hfill \\A project that utilizes DDS, DDS-XRCE to allow communication between modular components of a satelite in a very resource constrained environment in a way that scales efficently
 \begin{itemize}[noitemsep,nolistsep]
 \item Defined the planned behaviour of the software in different situations

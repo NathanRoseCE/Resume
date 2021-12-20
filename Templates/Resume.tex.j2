@@ -1,4 +1,4 @@
-\documentclass[10pt]{article}
+\documentclass[\PY{ fontSize }]{article}
 
 %packages
 \usepackage{geometry} %set peper size and font
@@ -15,14 +15,13 @@
 
 
 % formatting option --------------------------------------------------------------------------------------------
-\newcounter{paperVersion}
-\setcounter{paperVersion}{0}
-\newcounter{paragraphIndents}
-\setcounter{paragraphIndents}{1} %doesnt work yet lol
-\newcommand{\marginSize}{0.5in}
-\newcommand{\themeColorOne}{blue}
-\singlespacing
+\newcommand{\marginSize}{\PY{ margin }}
+\newcommand{\themeColorOne}{\PY{ themeColorOne }}
 
+\singlespacing
+\newcommand{\nameColor}{\themeColorOne}
+\newcommand{\sectionColor}{\themeColorOne}
+\geometry{letterpaper, margin=\marginSize}
 \newcommand{\entrySpacing}{4pt}
 \titlespacing\section{0pt}{4pt}{0pt}
 \setlength\parindent{0pt}
@@ -33,24 +32,46 @@
   urlcolor=\themeColorOne
 }
 
-% derived format values
-\newcommand{\nameColor}{\themeColorOne}
-\newcommand{\sectionColor}{\themeColorOne}
-\geometry{letterpaper, margin=\marginSize}
-\ifthenelse{\value{paragraphIndents}=1}{
-  \newif\ifprevious
-  \parskip=0pt
+% TODO: switch this to renew command to use base section
+\newcommand{\customSection}[1]{
+  \section*{\textcolor{\sectionColor}{#1}}
+  \vspace{0in}
 }
-{}
 
-\newcommand{\resume}{
+% formats the resources
+% 1 email
+% 2 phone number
+% 3 linkedin
+% 4 github
+\newcommand{\resources}[4]{
+  \begin{center}
+    \begin{tabular}{ll}
+      \resourceItemFormat{Email}{#1} & \resourceItemFormat{Phone Number}{#2} \\
+      \resourceItemFormat{LinkedIn}{#3} & \resourceItemFormat{Github}{#4} \\
+    \end{tabular}
+  \end{center}
+}
+
+% formats a resource item
+% 1 item name
+% 2 item value
+\newcommand{\resourceItemFormat}[2] {
+  \textbf{#1}: #2
+}
+% format your name
+% 1 name
+\newcommand{\nameFormat}[1]{
+  \begin{center}
+    {\LARGE \textcolor{\nameColor}{#1}}
+  \end{center}
+  \vspace{8pt}
 }
 % begin document
 \begin{document}
-\subimport{./}{Format}
-\subimport{./}{Header}
 
-\topHeader
+\nameFormat{\PY{ name }}
+\resources{\PY{ email }}{ \PY{ phoneNumber }}{\PY{ linkedIn | URL }}{\PY{ github | URL }}
+\noindent\rule{\textwidth}{1pt}
 
 \customSection{Education}
 \PYTHON{ for school in Education }

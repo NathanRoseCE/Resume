@@ -1,0 +1,40 @@
+{
+    "Education": [{
+	"school": "Embry-Riddle Aeronautical University",
+	"degree": "BS in Computer Engineering",
+	"GPA": 3.667,
+	"graduation": "Fall 2021",
+	"awards": "Dean’s list: Fall 2018, Spring 2019, Fall 2020, Spring 2021| Honor Roll: Fall 2019",
+	"RelevantClasses": [
+	    "Digital Circuit Design",
+	    "Microprocessor Systems",
+	    "Intro to Discrete Structures",
+	    "Computer Science II(OOP)",
+	    "Computing Aerospace and Aviation",
+	    "Digital Systems Design(FPGA)",
+	    "Telecommunication Systems",
+	    "Computer Architecture",
+	    "Linear Circuit Analysis",
+	    "Software Engineering Practices",
+	    "Operating Systems",
+	    "Real Time Operating Systems",
+	    "Signals and Systems",
+	    "Real Time Systems"
+	]
+    },{
+	"school": "Embry-Riddle Aeronautical University",
+	"degree": "MS in Computer Engineering",
+	"GPA": 3.75,
+	"graduation": "Spring 2022",
+	"awards": "Dean's list: Fall 2020, Spring 2021",
+	"RelevantClasses": [
+	    "Software Architecture",
+	    "Requirements Engineering",
+	    "Fundamentals of Systems Engineering",
+	    "Engineering Project Management",
+	    "System Safety and Certification",
+	    "Random Signals",
+	    "Linear Systems"
+	]
+    }]
+}

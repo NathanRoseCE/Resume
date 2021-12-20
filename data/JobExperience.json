@@ -1,0 +1,39 @@
+{
+    "JobExperience": [{
+	"company": "Katalyst Spce Technologies",
+	"start": "June 2021",
+	"stop": "Present",
+	"jobTitle": "Space Systems Engineering Intern",
+	"description": "Katalyst Space Technologies is a startup that is focused on developing technologies for modular spacecraft",
+	"accomplishments": [
+	    "Instructed the team on Software and Devops practices such as git and automated testing to improve team productivity",
+	    "Set up Test Driven Development and Continuous Integration practices on Azure Devops to improve software quality",
+	    "Designed a Testing Framework for a STTR Phase II project that was reviewed by an industry expert in project testing",
+	    "Designed a communication framework to allow general purpose communication between modules on a spacecraft",
+	    "Architected and programmed a program to characterize the Space Domain Awareness capabilities of multiple platforms",
+	    "Assisted in writing the Volume II and Volume V sections for a STTR Phase II Proposal",
+	    "Created a Project Plan for the Phase II STTR and managed the critical path to be within the project's deadline"
+	]
+    },{
+	"company": "Collins Aerospace",
+	"start": "June 2020",
+	"stop": "August 2020",
+	"jobTitle": "Software Engineering Intern",
+	"description": "Designed, created, and tested software for a few different projects under Collins Aerospace",
+	"accomplishments": [
+	    "Added functionality to the “Black Side Test Manager” that allowed for a software image to be uploaded to a remotely connected device via TFTP in Java and made a UI for said tool that would be used in the field",
+	    "Increased the efficiency of engineers in one of the labs by creating a python script that controlled a smart USB hub",
+	    "Created software that is able to listen into TENA messages in Python and print their output into individual windows for debugging"
+	]
+    },{
+	"company": "Sparton Electronics",
+	"start": "March 2019",
+	"stop": "August 2019",
+	"jobTitle": "Software Engineering Intern",
+	"description": "The goal of the sono-buey debug controller I was working on was to improve and modernize military sono-beuys",
+	"accomplishments": [
+	    "Programmed an Atmel microcontroller that was used as a debugging utility for integration tests of the product",
+	    "Analyzed and benchmarked a NXP processor to ensure that it would be appropriate for a defence project"
+	]
+    }]
+}
