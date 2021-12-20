@@ -1,0 +1,259 @@
+\documentclass[10pt]{article}
+
+%packages
+\usepackage{geometry} %set peper size and font
+\usepackage{parskip} %probs redundant with setspace
+\usepackage{setspace} %single space document
+\usepackage{enumitem} %spacing after indent
+\usepackage{tikz} %arrays
+\usepackage{xcolor} %color
+\usepackage{hyperref} %links
+\usepackage{ifthen} %self explanatory
+\usepackage{titlesec} %spacing for sections
+\usepackage{docmute}
+\usepackage{import}
+
+
+% formatting option --------------------------------------------------------------------------------------------
+\newcounter{paperVersion}
+\setcounter{paperVersion}{0}
+\newcounter{paragraphIndents}
+\setcounter{paragraphIndents}{1} %doesnt work yet lol
+\newcommand{\marginSize}{0.5in}
+\newcommand{\themeColorOne}{blue}
+\singlespacing
+
+\newcommand{\entrySpacing}{4pt}
+\titlespacing\section{0pt}{4pt}{0pt}
+\setlength\parindent{0pt}
+
+
+\hypersetup{
+  colorlinks=true,
+  urlcolor=\themeColorOne
+}
+
+% derived format values
+\newcommand{\nameColor}{\themeColorOne}
+\newcommand{\sectionColor}{\themeColorOne}
+\geometry{letterpaper, margin=\marginSize}
+\ifthenelse{\value{paragraphIndents}=1}{
+  \newif\ifprevious
+  \parskip=0pt
+}
+{}
+
+\newcommand{\resume}{
+}
+% begin document
+\begin{document}
+\subimport{./}{Format}
+\subimport{./}{Header}
+
+\topHeader
+
+\customSection{Education}
+\noindent\begin{minipage}{\linewidth}
+\entry{Embry-Riddle Aeronautical University(BS in Computer Engineering)} \hfill \textbf{GPA: 3.667}\\
+Graduation: Fall 2021\hfill Dean’s list: Fall 2018, Spring 2019, Fall 2020, Spring 2021| Honor Roll: Fall 2019\\Digital Circuit Design, Microprocessor Systems, Intro to Discrete Structures, Computer Science II(OOP), Computing Aerospace and Aviation, Digital Systems Design(FPGA), Telecommunication Systems, Computer Architecture, Linear Circuit Analysis, Software Engineering Practices, Operating Systems, Real Time Operating Systems, Signals and Systems, Real Time Systems
+
+\end{minipage}
+\vspace{\entrySpacing}
+
+\noindent\begin{minipage}{\linewidth}
+\entry{Embry-Riddle Aeronautical University(MS in Computer Engineering)} \hfill \textbf{GPA: 3.75}\\
+Graduation: Spring 2022\hfill Dean's list: Fall 2020, Spring 2021\\Software Architecture, Requirements Engineering, Fundamentals of Systems Engineering, Engineering Project Management, System Safety and Certification, Random Signals, Linear Systems
+
+\end{minipage}
+\vspace{\entrySpacing}
+
+
+\customSection{Work Experience}
+\noindent\begin{minipage}{\linewidth}
+\entry{Katalyst Spce Technologies} \hfill \textbf{June 2021 - Present}\\
+Space Systems Engineering Intern\hfill \\Katalyst Space Technologies is a startup that is focused on developing technologies for modular spacecraft
+\begin{itemize}[noitemsep,nolistsep]
+\item Instructed the team on Software and Devops practices such as git and automated testing to improve team productivity
+\item Set up Test Driven Development and Continuous Integration practices on Azure Devops to improve software quality
+\item Designed a Testing Framework for a STTR Phase II project that was reviewed by an industry expert in project testing
+\item Designed a communication framework to allow general purpose communication between modules on a spacecraft
+\item Architected and programmed a program to characterize the Space Domain Awareness capabilities of multiple platforms
+\item Assisted in writing the Volume II and Volume V sections for a STTR Phase II Proposal
+\item Created a Project Plan for the Phase II STTR and managed the critical path to be within the project's deadline
+\end{itemize}
+
+
+\end{minipage}
+\vspace{\entrySpacing}
+
+\noindent\begin{minipage}{\linewidth}
+\entry{Collins Aerospace} \hfill \textbf{June 2020 - August 2020}\\
+Software Engineering Intern\hfill \\Designed, created, and tested software for a few different projects under Collins Aerospace
+\begin{itemize}[noitemsep,nolistsep]
+\item Added functionality to the “Black Side Test Manager” that allowed for a software image to be uploaded to a remotely connected device via TFTP in Java and made a UI for said tool that would be used in the field
+\item Increased the efficiency of engineers in one of the labs by creating a python script that controlled a smart USB hub
+\item Created software that is able to listen into TENA messages in Python and print their output into individual windows for debugging
+\end{itemize}
+
+
+\end{minipage}
+\vspace{\entrySpacing}
+
+\noindent\begin{minipage}{\linewidth}
+\entry{Sparton Electronics} \hfill \textbf{March 2019 - August 2019}\\
+Software Engineering Intern\hfill \\The goal of the sono-buey debug controller I was working on was to improve and modernize military sono-beuys
+\begin{itemize}[noitemsep,nolistsep]
+\item Programmed an Atmel microcontroller that was used as a debugging utility for integration tests of the product
+\item Analyzed and benchmarked a NXP processor to ensure that it would be appropriate for a defence project
+\end{itemize}
+
+
+\end{minipage}
+\vspace{\entrySpacing}
+
+
+\customSection{Projects}
+\noindent\begin{minipage}{\linewidth}
+\entry{Nova Flight Computer(ERFSEDS)} \hfill \textbf{January 2020 - Present}\\
+Chief Computer Engineer, Software Lead, Github Maintainer\hfill \\The goal of this project is to create a flight computer from components to be used on High Power Model Rockets
+\begin{itemize}[noitemsep,nolistsep]
+\item Designed a layered software architecture that was able to deal with the requirements from different stakeholders
+\item Created various electrical modules for the flight computer using KiCAD such as the Pyro Channels and IMU
+\item Lead the software team and established a software framework and practices that would be followed while programming
+\item Programmed the Sensor Fusion, Flight Logic, and Logging software modules in order to meet the project's objectives
+\item Set up automated testing with cmake that performs unit and integration tests and ensured developers followed TDD
+\end{itemize}
+
+
+\end{minipage}
+\vspace{\entrySpacing}
+
+\noindent\begin{minipage}{\linewidth}
+\entry{EasyNN(Senior Design)} \hfill \textbf{January 2021 - May 2021}\\
+Developer\hfill \\The goal is to create an easy to use and highly customizable software to allow people to create and train neural networks
+\begin{itemize}[noitemsep,nolistsep]
+\item Created a Neural Network layer in python that leveraged Numpy in order to simplify and speed up calculations
+\item Designed and implimented test software to confirm the mathematics was properly implimented
+\end{itemize}
+
+
+\end{minipage}
+\vspace{\entrySpacing}
+
+\noindent\begin{minipage}{\linewidth}
+\entry{NASA Robotic Mining Competition(Robotics Association)} \hfill \textbf{September 2018 - May 2020}\\
+Project Lead, Electrical Member, Software Member\hfill \\NASA Robotic Mining Competition(RMC) is a competition held every May at Kennedy Space Center where a robot must be designed that must cross rough terrain, mine icy regolith, and return it to a bin for processing
+\begin{itemize}[noitemsep,nolistsep]
+\item Integrated Mechanical Electrical and Software efforts during a system redesign  to increase the performance of the robot
+\item Designed electrical boards in Autodesk Eagle for a microcontroller interface between the sensors and the main computer
+\item Managed a team of 30 members split into 4 subteams to handle different disciplines of robotics and the competition
+\item Programmed the walking motion of a robot with C-shaped Legs in Labview
+\end{itemize}
+
+
+\end{minipage}
+\vspace{\entrySpacing}
+
+\noindent\begin{minipage}{\linewidth}
+\entry{Artemis Rocket(ERFSEDS)} \hfill \textbf{January 2019 - May 2021}\\
+Avionics Member\hfill \\Artemis is a two-stage rocket that competes in the Spaceport America Rocket Competition.
+\begin{itemize}[noitemsep,nolistsep]
+\item Discovered a safety issue that caused the flight computer to never disarm and created a fix to solve the issue
+\item Redesigned the Ebay in order to ensure the safety of the rocket and compliance with Spaceport America Rules
+\item Analyzed flight computer data to diagnose inflight issues and determine the performance of the onboard electroncis
+\end{itemize}
+
+
+\end{minipage}
+\vspace{\entrySpacing}
+
+\noindent\begin{minipage}{\linewidth}
+\entry{Rose Processor(Class Project)} \hfill \textbf{September 2018 - December 2018}\\
+Designer\hfill \\Modified the design of a micro-processor implemented on an FPGA in Verilog
+\begin{itemize}[noitemsep,nolistsep]
+\item Increased the throughput of the processor by a factor of two by creating a three stage pipeline
+\item Simplified the processor’s IO operations by mapping IO operations to addresses in the data memory
+\item Designed and implemented a increase the capabilities of the processor including implimentation of functions
+\item Created a variable length opcode with fixed instruction size to expand the number of operations that can be performed
+\end{itemize}
+
+
+\end{minipage}
+\vspace{\entrySpacing}
+
+\noindent\begin{minipage}{\linewidth}
+\entry{ERFSEDS(Club)} \hfill \textbf{May 2020 - Present}\\
+Chief Computer Engineer\hfill \\Responsible for the safe and successful operation of all electronics
+\begin{itemize}[noitemsep,nolistsep]
+\item Ensured the safe design and operation of all electronics by setting up review processes for all components
+\item Created and Managed the organization's Github in order to provide version control and issue tracking
+\item Organized a Systems Engineering process for the development of electronics within Cerberus
+\end{itemize}
+
+
+\end{minipage}
+\vspace{\entrySpacing}
+
+\noindent\begin{minipage}{\linewidth}
+\entry{RAER(Club)} \hfill \textbf{September 2018 - May 2021}\\
+President, Vice President\hfill \\Lead the club through the COVID crises ensuring the continued success of the club
+\begin{itemize}[noitemsep,nolistsep]
+\item Ensured the training of new members with workshops to teach application of engineering and technical skills
+\item Adapted to circumstances through the early parts of the COVID  Pandemic ensuring continued development while ensuring adhering to school policies
+\item Increased the awareness of the projects of RAER within school resulting in the best recruiting in several years
+\end{itemize}
+
+
+\end{minipage}
+\vspace{\entrySpacing}
+
+\noindent\begin{minipage}{\linewidth}
+\entry{RAER(Club)} \hfill \textbf{September 2018 - May 2021}\\
+President, Vice President\hfill \\Lead the club through the COVID crises ensuring the continued success of the club
+\begin{itemize}[noitemsep,nolistsep]
+\item Ensured the training of new members with workshops to teach application of engineering and technical skills
+\item Adapted to circumstances through the early parts of the COVID  Pandemic ensuring continued development while ensuring adhering to school policies
+\item Increased the awareness of the projects of RAER within school resulting in the best recruiting in several years
+\end{itemize}
+
+
+\end{minipage}
+\vspace{\entrySpacing}
+
+\noindent\begin{minipage}{\linewidth}
+\entry{SDA Tool(Katalyst Space Technologies)} \hfill \textbf{July 2021 - Present}\\
+Architect, Software Engineer\hfill \\The SDA tool allowed developers to characterize differnt Space Domain Awareness platforms under various conditions
+\begin{itemize}[noitemsep,nolistsep]
+\item Architected the structure of the code with stakeholders to determine immediate goals and path forward of the project
+\item Setup a automated test suite and ensured Test Driven Development Practices were followed through Code Reviews
+\item Set up a Continuous Integration testing pipeline on Azure Devops to automate regression testing
+\item Programmed several high-quality software modules outlined in the class diagram in python3
+\item Setup and managed the Code Repository setting up permissions and automatic code reviews
+\end{itemize}
+
+
+\end{minipage}
+\vspace{\entrySpacing}
+
+\noindent\begin{minipage}{\linewidth}
+\entry{Fedora(Grad Project)} \hfill \textbf{Auguest 2020 - Present}\\
+Creator, Quality Assurance, Developer\hfill \\A project that utilizes DDS, DDS-XRCE to allow communication between modular components of a satelite in a very resource constrained environment in a way that scales efficently
+\begin{itemize}[noitemsep,nolistsep]
+\item Defined the planned behaviour of the software in different situations
+\item Removed single points of failure by planning a method to create new DDS-XRCE agents when one fails
+\end{itemize}
+
+
+\end{minipage}
+\vspace{\entrySpacing}
+
+
+\customSection{ Skills }
+Applications: CMake, Git, KiCAD, DDS, DDS-XRCE, Docker, Docker-Compose, Eclipse, IntelliJ, Django, Autodesk Eagle, ROS, Ruby on Rails
+
+Languanges: Python, C/C++, Java, Rust, Verilog, \LaTeX, Ruby
+
+Other: FPGA, Eagle Scout, FIRST Alumni
+
+
+\end{document}

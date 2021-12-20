@@ -44,21 +44,30 @@
 {}
 
 \newcommand{\resume}{
-  \topHeader
-  \Education
-  \WorkExperience
-  \projects
-  \skills
 }
 % begin document
 \begin{document}
-\subimport{Formatting/}{Format}
-\subimport{Header/}{Header}
-\subimport{Education/}{Education}
-\subimport{Education/}{Work}
-\subimport{Education/}{Projects}
-\subimport{Education/}{Skills}
+\subimport{./}{Format}
+\subimport{./}{Header}
 
-\resume
+\topHeader
+
+\customSection{Education}
+\PYTHON{ for school in Education }
+\PY{ school | Education }
+\PYTHON{ endfor }
+
+\customSection{Work Experience}
+\PYTHON{ for job in JobExperience }
+\PY{ job | Work }
+\PYTHON{ endfor }
+
+\customSection{Projects}
+\PYTHON{ for project in projects }
+\PY{ project | Project }
+\PYTHON{ endfor }
+
+\customSection{ Skills }
+\PY{ skills | Skills }
 \end{document}
 
