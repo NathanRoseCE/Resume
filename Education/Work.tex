@@ -1,0 +1,66 @@
+\begin{document}
+
+% creates a work entry, without description and accomplishments
+% 1: company name
+% 2: start date
+% 3: end date
+% 4: title
+\newcommand{\workEntry}[6]{
+  \keepTogether{
+    \doubleLineEntry{#1}{#2 - #3}{\textbf{#4}}{}
+    #5
+    \bullettedList{#6}
+  }
+}
+
+\newcommand{\WorkExperience}{
+  \customSection{Work Experience}
+
+    \noindent\begin{minipage}{\linewidth}
+\entry{Katalyst Spce Technologies} \hfill \textbf{June 2021 - Present}\\
+Space Systems Engineering Intern\hfill \\Katalyst Space Technologies is a startup that is focused on developing technologies for modular spacecraft
+\begin{itemize}[noitemsep,nolistsep]
+\item Instructed the team on Software and Devops practices such as git and automated testing to improve team productivity
+\item Set up Test Driven Development and Continuous Integration practices on Azure Devops to improve software quality
+\item Designed a Testing Framework for a STTR Phase II project that was reviewed by an industry expert in project testing
+\item Designed a communication framework to allow general purpose communication between modules on a spacecraft
+\item Architected and programmed a program to characterize the Space Domain Awareness capabilities of multiple platforms
+\item Assisted in writing the Volume II and Volume V sections for a STTR Phase II Proposal
+\item Created a Project Plan for the Phase II STTR and managed the critical path to be within the project's deadline
+\end{itemize}
+
+
+\end{minipage}
+\vspace{\entrySpacing}
+
+    \noindent\begin{minipage}{\linewidth}
+\entry{Collins Aerospace} \hfill \textbf{June 2020 - August 2020}\\
+Software Engineering Intern\hfill \\Designed, created, and tested software for a few different projects under Collins Aerospace
+\begin{itemize}[noitemsep,nolistsep]
+\item Added functionality to the “Black Side Test Manager” that allowed for a software image to be uploaded to a remotely connected device via TFTP in Java and made a UI for said tool that would be used in the field
+\item Increased the efficiency of engineers in one of the labs by creating a python script that controlled a smart USB hub
+\item Created software that is able to listen into TENA messages in Python and print their output into individual windows for debugging
+\end{itemize}
+
+
+\end{minipage}
+\vspace{\entrySpacing}
+
+    \noindent\begin{minipage}{\linewidth}
+\entry{Sparton Electronics} \hfill \textbf{March 2019 - August 2019}\\
+Software Engineering Intern\hfill \\The goal of the sono-buey debug controller I was working on was to improve and modernize military sono-beuys
+\begin{itemize}[noitemsep,nolistsep]
+\item Programmed an Atmel microcontroller that was used as a debugging utility for integration tests of the product
+\item Analyzed and benchmarked a NXP processor to ensure that it would be appropriate for a defence project
+\end{itemize}
+
+
+\end{minipage}
+\vspace{\entrySpacing}
+
+  }
+
+% \subimport{./}{katalyst}
+% \subimport{./}{collins}
+% \subimport{./}{sparton}
+\end{document}

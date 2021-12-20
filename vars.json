@@ -1,0 +1,234 @@
+{
+    "Education": [{
+	"school": "Embry-Riddle Aeronautical University",
+	"degree": "BS in Computer Engineering",
+	"GPA": 3.667,
+	"graduation": "Fall 2021",
+	"awards": "Dean’s list: Fall 2018, Spring 2019, Fall 2020, Spring 2021| Honor Roll: Fall 2019",
+	"RelevantClasses": [
+	    "Digital Circuit Design",
+	    "Microprocessor Systems",
+	    "Intro to Discrete Structures",
+	    "Computer Science II(OOP)",
+	    "Computing Aerospace and Aviation",
+	    "Digital Systems Design(FPGA)",
+	    "Telecommunication Systems",
+	    "Computer Architecture",
+	    "Linear Circuit Analysis",
+	    "Software Engineering Practices",
+	    "Operating Systems",
+	    "Real Time Operating Systems",
+	    "Signals and Systems",
+	    "Real Time Systems"
+	]
+    },{
+	"school": "Embry-Riddle Aeronautical University",
+	"degree": "MS in Computer Engineering",
+	"GPA": 3.75,
+	"graduation": "Spring 2022",
+	"awards": "Dean's list: Fall 2020, Spring 2021",
+	"RelevantClasses": [
+	    "Software Architecture",
+	    "Requirements Engineering",
+	    "Fundamentals of Systems Engineering",
+	    "Engineering Project Management",
+	    "System Safety and Certification",
+	    "Random Signals",
+	    "Linear Systems"
+	]
+    }],
+    "JobExperience": [{
+	"company": "Katalyst Spce Technologies",
+	"start": "June 2021",
+	"stop": "Present",
+	"jobTitle": "Space Systems Engineering Intern",
+	"description": "Katalyst Space Technologies is a startup that is focused on developing technologies for modular spacecraft",
+	"accomplishments": [
+    "Instructed the team on Software and Devops practices such as git and automated testing to improve team productivity",
+    "Set up Test Driven Development and Continuous Integration practices on Azure Devops to improve software quality",
+    "Designed a Testing Framework for a STTR Phase II project that was reviewed by an industry expert in project testing",
+    "Designed a communication framework to allow general purpose communication between modules on a spacecraft",
+    "Architected and programmed a program to characterize the Space Domain Awareness capabilities of multiple platforms",
+    "Assisted in writing the Volume II and Volume V sections for a STTR Phase II Proposal",
+    "Created a Project Plan for the Phase II STTR and managed the critical path to be within the project's deadline"
+	]
+    },{
+	"company": "Collins Aerospace",
+	"start": "June 2020",
+	"stop": "August 2020",
+	"jobTitle": "Software Engineering Intern",
+	"description": "Designed, created, and tested software for a few different projects under Collins Aerospace",
+	"accomplishments": [
+	    "Added functionality to the “Black Side Test Manager” that allowed for a software image to be uploaded to a remotely connected device via TFTP in Java and made a UI for said tool that would be used in the field",
+	    "Increased the efficiency of engineers in one of the labs by creating a python script that controlled a smart USB hub",
+	    "Created software that is able to listen into TENA messages in Python and print their output into individual windows for debugging"
+	]
+    },{
+	"company": "Sparton Electronics",
+	"start": "March 2019",
+	"stop": "August 2019",
+	"jobTitle": "Software Engineering Intern",
+	"description": "The goal of the sono-buey debug controller I was working on was to improve and modernize military sono-beuys",
+	"accomplishments": [
+	    "Programmed an Atmel microcontroller that was used as a debugging utility for integration tests of the product",
+	    "Analyzed and benchmarked a NXP processor to ensure that it would be appropriate for a defence project"
+	]
+    }],
+    "projects": [{
+	"name": "Nova Flight Computer",
+	"parent": "ERFSEDS",
+	"start": "January 2020",
+	"stop": "Present",
+	"role": "Chief Computer Engineer, Software Lead, Github Maintainer",
+	"description": "The goal of this project is to create a flight computer from components to be used on High Power Model Rockets",
+	"accomplishments": [
+	    "Designed a layered software architecture that was able to deal with the requirements from different stakeholders",
+	    "Created various electrical modules for the flight computer using KiCAD such as the Pyro Channels and IMU",
+	    "Lead the software team and established a software framework and practices that would be followed while programming",
+	    "Programmed the Sensor Fusion, Flight Logic, and Logging software modules in order to meet the project's objectives",
+	    "Set up automated testing with cmake that performs unit and integration tests and ensured developers followed TDD"
+	]
+    },{
+	"name": "EasyNN",
+	"parent": "Senior Design",
+	"start": "January 2021",
+	"stop": "May 2021",
+	"role": "Developer",
+	"description": "The goal is to create an easy to use and highly customizable software to allow people to create and train neural networks",
+	"accomplishments": [
+	    "Created a Neural Network layer in python that leveraged Numpy in order to simplify and speed up calculations",
+	    "Designed and implimented test software to confirm the mathematics was properly implimented"
+	]
+    },{
+	"name": "NASA Robotic Mining Competition",
+	"parent": "Robotics Association",
+	"start": "September 2018",
+	"stop": "May 2020",
+	"role": "Project Lead, Electrical Member, Software Member",
+	"description": "NASA Robotic Mining Competition(RMC) is a competition held every May at Kennedy Space Center where a robot must be designed that must cross rough terrain, mine icy regolith, and return it to a bin for processing",
+	"accomplishments": [
+	    "Integrated Mechanical Electrical and Software efforts during a system redesign  to increase the performance of the robot",
+	    "Designed electrical boards in Autodesk Eagle for a microcontroller interface between the sensors and the main computer",
+	    "Managed a team of 30 members split into 4 subteams to handle different disciplines of robotics and the competition",
+	    "Programmed the walking motion of a robot with C-shaped Legs in Labview"
+	]
+    },{
+	"name": "Artemis Rocket",
+	"parent": "ERFSEDS",
+	"start": "January 2019",
+	"stop": "May 2021",
+	"role": "Avionics Member",
+	"description": "Artemis is a two-stage rocket that competes in the Spaceport America Rocket Competition.",
+	"accomplishments": [
+	    "Discovered a safety issue that caused the flight computer to never disarm and created a fix to solve the issue",
+	    "Redesigned the Ebay in order to ensure the safety of the rocket and compliance with Spaceport America Rules",
+	    "Analyzed flight computer data to diagnose inflight issues and determine the performance of the onboard electroncis"
+	]
+    },{
+	"name": "Rose Processor",
+	"parent": "Class Project",
+	"start": "September 2018",
+	"stop": "December 2018",
+	"role": "Designer",
+	"description": "Modified the design of a micro-processor implemented on an FPGA in Verilog",
+	"accomplishments": [
+	    "Increased the throughput of the processor by a factor of two by creating a three stage pipeline",
+	    "Simplified the processor’s IO operations by mapping IO operations to addresses in the data memory",
+	    "Designed and implemented a increase the capabilities of the processor including implimentation of functions",
+	    "Created a variable length opcode with fixed instruction size to expand the number of operations that can be performed"
+	]
+    },{
+	"name": "ERFSEDS",
+	"parent": "Club",
+	"start": "May 2020",
+	"stop": "Present",
+	"role": "Chief Computer Engineer",
+	"description": "Responsible for the safe and successful operation of all electronics",
+	"accomplishments": [
+	    "Ensured the safe design and operation of all electronics by setting up review processes for all components",
+	    "Created and Managed the organization's Github in order to provide version control and issue tracking",
+	    "Organized a Systems Engineering process for the development of electronics within Cerberus"
+	]
+    },{
+	"name": "RAER",
+	"parent": "Club",
+	"start": "September 2018",
+	"stop": "May 2021",
+	"role": "President, Vice President",
+	"description": "Lead the club through the COVID crises ensuring the continued success of the club",
+	"accomplishments": [
+	    "Ensured the training of new members with workshops to teach application of engineering and technical skills",
+	    "Adapted to circumstances through the early parts of the COVID  Pandemic ensuring continued development while ensuring adhering to school policies",
+	    "Increased the awareness of the projects of RAER within school resulting in the best recruiting in several years"
+	]
+    },{
+	"name": "RAER",
+	"parent": "Club",
+	"start": "September 2018",
+	"stop": "May 2021",
+	"role": "President, Vice President",
+	"description": "Lead the club through the COVID crises ensuring the continued success of the club",
+	"accomplishments": [
+	    "Ensured the training of new members with workshops to teach application of engineering and technical skills",
+	    "Adapted to circumstances through the early parts of the COVID  Pandemic ensuring continued development while ensuring adhering to school policies",
+	    "Increased the awareness of the projects of RAER within school resulting in the best recruiting in several years"
+	]
+    },{
+	"name": "SDA Tool",
+	"parent": "Katalyst Space Technologies",
+	"start": "July 2021",
+	"stop": "Present",
+	"role": "Architect, Software Engineer",
+	"description": "The SDA tool allowed developers to characterize differnt Space Domain Awareness platforms under various conditions",
+	"accomplishments": [
+	    "Architected the structure of the code with stakeholders to determine immediate goals and path forward of the project",
+	    "Setup a automated test suite and ensured Test Driven Development Practices were followed through Code Reviews",
+	    "Set up a Continuous Integration testing pipeline on Azure Devops to automate regression testing",
+	    "Programmed several high-quality software modules outlined in the class diagram in python3",
+	    "Setup and managed the Code Repository setting up permissions and automatic code reviews"
+	]
+    },{
+	"name": "Fedora",
+	"parent": "Grad Project",
+	"start": "Auguest 2020",
+	"stop": "Present",
+	"role": "Creator, Quality Assurance, Developer",
+	"description": "A project that utilizes DDS, DDS-XRCE to allow communication between modular components of a satelite in a very resource constrained environment in a way that scales efficently",
+	"accomplishments": [
+	    "Defined the planned behaviour of the software in different situations",
+	    "Removed single points of failure by planning a method to create new DDS-XRCE agents when one fails"
+	]
+    }],
+    "skills": {
+	"applications": [
+	    "CMake",
+	    "Git",
+	    "KiCAD",
+	    "DDS",
+	    "DDS-XRCE",
+	    "Docker",
+	    "Docker-Compose",
+	    "Eclipse",
+	    "IntelliJ",
+	    "Django",
+	    "Autodesk Eagle",
+	    "ROS",
+	    "Ruby on Rails"
+	],
+	"languanges": [
+	    "Python",
+	    "C/C++",
+	    "Java",
+	    "Rust",
+	    "Verilog",
+	    "\\LaTeX",
+	    "Ruby"
+	],
+	"keywords": [
+	    "FPGA",
+	    "Eagle Scout",
+	    "FIRST Alumni"
+	    
+	]
+    }
+}

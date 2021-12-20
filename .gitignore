@@ -3,3 +3,5 @@ auto/
 *.aux
 *.out
 *.log
+venv/
+*.pyc
